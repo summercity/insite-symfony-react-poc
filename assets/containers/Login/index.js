@@ -9,7 +9,7 @@ export default function Login() {
   return (
     <>
       <Layout>
-        <Row justify="center">
+        <Row justify="center" align="middle" style={{ height: "100vh" }}>
           <Col span={6}>
             <Form
               form={form}
