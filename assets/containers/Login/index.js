@@ -1,9 +1,10 @@
 import React from 'react';
+import { Button } from 'antd'
 
 export default function Login() {
     return (
         <>
-            <h1>Login Componet</h1>
+            <Button type="primary">Login</Button>
         </>
     );
   };
