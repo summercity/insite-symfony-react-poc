@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import Dashboard from '../Dashboard'
 import Login from '../Login'
+import NotFoundPage from '../../components/NotFoundPage'
 
 const AppWrapper = styled.div`
   max-width: calc(768px + 16px * 2);
@@ -29,8 +30,7 @@ export default function App() {
             <Route exact path="/" component={Dashboard} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/login" component={Login} />
-            {/* <Route path="/features" component={FeaturePage} />
-            <Route path="" component={NotFoundPage} /> */}
+            <Route path="" component={NotFoundPage} />
             </Switch>
         </BrowserRouter>
         {/* <Footer />
