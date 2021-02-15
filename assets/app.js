@@ -12,37 +12,7 @@ import './styles/app.css';
 import './bootstrap';
 import React from 'react';
 import ReactDOM from 'react-dom'
-
-console.log("hello")
-
-// const HelloWorld = () => {
-  
-//     function sayHello() {
-//       alert('Hello, World!');
-//     }
-    
-//     return (
-//       <button onClick={sayHello}>Click me!</button>
-//     );
-//   };
-  
-//   export default HelloWorld;
+import App from './containers/App';
 
 
-
-const App = () => {
-  
-    function sayHello() {
-      alert('Hello, World!');
-    }
-    
-    return (
-        <>
-              <button onClick={sayHello}>Click me!</button>
-              <h1>Sample Componet in React!</h1>
-        </>
-    );
-  };
-
-
-  ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
