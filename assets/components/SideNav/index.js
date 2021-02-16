@@ -2,10 +2,18 @@
 import React from "react";
 import { Layout, Menu } from "antd";
 import {
-  LaptopOutlined,
-  NotificationOutlined,
-  UserOutlined,
+  AppstoreOutlined,
+  PieChartOutlined,
+  CalendarOutlined,
+  DesktopOutlined,
+  BankOutlined,
+  AreaChartOutlined,
+  TeamOutlined,
+  ShoppingCartOutlined,
+  UserAddOutlined,
+  LogoutOutlined,
 } from "@ant-design/icons";
+import './sidenav.scss';
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
@@ -16,36 +24,60 @@ function SideNav() {
         <Sider
             width={200}
             className="site-layout-background"
-            style={{ minHeight: "100vh" }}
+            className="side-nav"
         >
             <Menu
-            mode="inline"
-            defaultSelectedKeys={["1"]}
-            defaultOpenKeys={["sub1"]}
-            style={{ height: "100%", borderRight: 0 }}
+                mode="inline"
+                defaultSelectedKeys={["dashboard"]} // TODO: Create global state
+                // defaultOpenKeys={["sub1"]} TODO: Create global state
+                style={{ height: "100%", borderRight: 0 }}
             >
-            <SubMenu key="sub1" icon={<UserOutlined />} title="subnav 1">
-                <Menu.Item key="1">option1</Menu.Item>
-                <Menu.Item key="2">option2</Menu.Item>
-                <Menu.Item key="3">option3</Menu.Item>
-                <Menu.Item key="4">option4</Menu.Item>
-            </SubMenu>
-            <SubMenu key="sub2" icon={<LaptopOutlined />} title="subnav 2">
-                <Menu.Item key="5">option5</Menu.Item>
-                <Menu.Item key="6">option6</Menu.Item>
-                <Menu.Item key="7">option7</Menu.Item>
-                <Menu.Item key="8">option8</Menu.Item>
-            </SubMenu>
-            <SubMenu
-                key="sub3"
-                icon={<NotificationOutlined />}
-                title="subnav 3"
-            >
-                <Menu.Item key="9">option9</Menu.Item>
-                <Menu.Item key="10">option10</Menu.Item>
-                <Menu.Item key="11">option11</Menu.Item>
-                <Menu.Item key="12">option12</Menu.Item>
-            </SubMenu>
+                <Menu.Item key="dashboard" icon={<AppstoreOutlined />}>
+                    Dashboard
+                </Menu.Item>
+                <Menu.Item key="overview" icon={<PieChartOutlined />}>
+                    Overview
+                </Menu.Item>
+                <Menu.Item key="myWorkDay" icon={<CalendarOutlined />}>
+                    My Work Day
+                </Menu.Item>
+                <Menu.Item key="leadReport" icon={<DesktopOutlined />}>
+                    Leads Report
+                </Menu.Item>
+                <SubMenu key="stock" icon={<BankOutlined />} title="Stock">
+                    <Menu.Item key="1">Land Stats</Menu.Item>
+                    <Menu.Item key="2">Package Stats</Menu.Item>
+                </SubMenu>
+                <SubMenu key="reporting" icon={<AreaChartOutlined />} title="Reporting">
+                    <Menu.Item key="5">Download Reports</Menu.Item>
+                    <Menu.Item key="6">Web Reports</Menu.Item>
+                    <Menu.Item key="7">eDM Reports</Menu.Item>
+                    <Menu.Item key="8">Marketing Report</Menu.Item>
+                </SubMenu>
+                <SubMenu
+                    key="admin"
+                    icon={<TeamOutlined />}
+                    title="Admin"
+                >
+                    <Menu.Item key="9">Admin Settings</Menu.Item>
+                    <Menu.Item key="10">User Settings</Menu.Item>
+                    <Menu.Item key="11">Integrations</Menu.Item>
+                </SubMenu>
+                <Menu.Item key="insiteProducts" disabled>
+                    Insite Products
+                </Menu.Item>
+                <Menu.Item key="invManagement" icon={<ShoppingCartOutlined />}>
+                    Inv. Management
+                </Menu.Item>
+                <Menu.Item key="systems" disabled>
+                    Systems
+                </Menu.Item>
+                <Menu.Item key="registerUser" icon={<UserAddOutlined />}>
+                    Register User
+                </Menu.Item>
+                <Menu.Item key="logout" icon={<LogoutOutlined />}>
+                    Logout
+                </Menu.Item>
             </Menu>
         </Sider>
     </>
