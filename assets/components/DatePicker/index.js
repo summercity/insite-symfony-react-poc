@@ -9,11 +9,19 @@ const DatePicker = () => {
   const { setStartDate, setEndDate, startDate, endDate } = React.useContext(
     DateRangeContext
   );
+  const [preset, setPreset] = React.useState(TODAY);
   const [isDatePickerVisible, setIsDatePickerVisible] = React.useState(false);
 
   const handleChange = (date, dateString) => {
-    setStartDate(date[0].startOf("day"));
-    setEndDate(date[1].endOf("day"));
+    if (!date) {
+      const now = moment();
+      setStartDate(now.clone().startOf("day"));
+      setEndDate(now.endOf("day"));
+      setPreset(TODAY);
+    } else {
+      setStartDate(date[0].startOf("day"));
+      setEndDate(date[1].endOf("day"));
+    }
   };
 
   const handlePresetChange = (e) => {
@@ -74,6 +82,7 @@ const DatePicker = () => {
       <Select
         style={{ width: 180 }}
         defaultValue={TODAY}
+        value={preset}
         onChange={handlePresetChange}
       >
         <Option key={1} value={TODAY}>
