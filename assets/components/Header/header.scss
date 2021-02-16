@@ -1,0 +1,24 @@
+
+@import '../../styles/settings.scss';
+
+.header {
+    background-color: $primaryBackground;
+    padding: 0 20px;
+    .logo {
+        float: left;
+        width: 120px;
+        height: 31px;
+        text-align: center;
+        img {
+            width: 50px;
+        }
+      }
+      .menu-icon {
+        float: left;
+        color: $lightTexColor;
+        width: 16px;
+        cursor: pointer;
+    }
+    
+}
+

@@ -13,7 +13,7 @@ import App from './containers/App';
 import 'antd/dist/antd.css';
 
 // any CSS you import will output into a single css file (app.css in this case)
-import './styles/app.css';
+import './styles/app.scss';
 
 
 ReactDOM.render(<App />, document.getElementById('app'));
