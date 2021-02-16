@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Form, Input, Checkbox, Button, Layout, Col, Row } from "antd";
+import DatePicker from "./../../components/DatePicker";
 
 export default function Login() {
   const [loading, setLoading] = useState(false);
@@ -10,6 +11,7 @@ export default function Login() {
     <>
       <Layout>
         <Row justify="center" align="middle" style={{ height: "100vh" }}>
+          <DatePicker />
           <Col span={6}>
             <Form
               form={form}
