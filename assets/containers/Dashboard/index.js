@@ -1,28 +1,11 @@
-import React, { useContext, useMemo } from 'react'
-import { SET_APP_ERROR } from '../../context/constant'
-import { Context } from '../../context/ContextStore'
+import React, { useMemo } from 'react'
 
 export default function Dashboard() {
-  const [state, dispatch] = useContext(Context)
-  const { globalError } = state
-  const renderCount = React.useRef(1)
-  React.useEffect(() => {
-    renderCount.current += 1
-  })
-
-  const handleClick = () => {
-    const newGlobalError = globalError ? false : true
-    dispatch({ type: SET_APP_ERROR, payload: newGlobalError })
-  }
   return useMemo(() => {
     return (
       <>
-        <h1>Dashboard Componet</h1>
-        <button onClick={handleClick}>
-          Test Global context State change From Dashboard
-        </button>
-        <label>Render {renderCount.current}</label>
+        <h1>Dashboard Component</h1>
       </>
     )
-  }, [globalError, dispatch])
+  }, [])
 }

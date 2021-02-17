@@ -1,4 +1,5 @@
 import React, { createContext, useReducer } from 'react'
+import PropTypes from 'prop-types'
 import ContextReducer from './ContextReducer'
 
 const initialState = {
@@ -17,6 +18,10 @@ const ContextStore = ({ children }) => {
   return (
     <Context.Provider value={[state, dispatch]}>{children}</Context.Provider>
   )
+}
+
+ContextStore.propTypes = {
+  children: PropTypes.element,
 }
 
 export const Context = createContext(initialState)

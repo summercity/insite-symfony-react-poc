@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import ContentWrapper from '../ContentWrapper'
 
 const ProtectedRoute = ({ component: Componnent, ...rest }) => {
@@ -20,6 +21,10 @@ const ProtectedRoute = ({ component: Componnent, ...rest }) => {
       }}
     />
   )
+}
+
+ProtectedRoute.propTypes = {
+  component: PropTypes.func.isRequired,
 }
 
 export default ProtectedRoute

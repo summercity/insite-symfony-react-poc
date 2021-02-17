@@ -3,6 +3,7 @@ import { Layout } from 'antd'
 import MainHeader from '../Header'
 import SideNav from '../SideNav'
 import Breadcrumb from '../Breadcrump'
+import PropTypes from 'prop-types'
 
 const { Content } = Layout
 const access = true // TODO: Create authentication
@@ -33,6 +34,10 @@ function ContentWrapper(props) {
       </>
     )
   )
+}
+
+ContentWrapper.propTypes = {
+  children: PropTypes.element,
 }
 
 export default ContentWrapper
