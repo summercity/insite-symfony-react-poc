@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { DateRangeContextProvider } from "./../../context/DateRangeContext";
 // import styled from 'styled-components';
+import ContextStore from '../../context/ContextStore'
 import Dashboard from "../Dashboard";
 import Login from "../Login";
 import NotFoundPage from "../../components/NotFoundPage";
@@ -16,21 +17,23 @@ import ProtectedRoute from "../../components/ProtectedRoute";
 export default function App() {
   return (
     <>
-      <DateRangeContextProvider>
-        <Helmet titleTemplate="insiteLogic" defaultTitle="insiteLogic">
-          <meta name="description" content="insiteLogic" />
-        </Helmet>
-        <BrowserRouter>
-          <Switch>
-            <ProtectedRoute exact path="/" component={Dashboard} />
-            <ProtectedRoute exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/login" component={Login} />
-            <Route path="" component={NotFoundPage} />
-          </Switch>
-        </BrowserRouter>
-        {/* <Footer />
-        <GlobalStyle /> */}
-      </DateRangeContextProvider>
+      <ContextStore>
+        <DateRangeContextProvider>
+          <Helmet titleTemplate="insiteLogic" defaultTitle="insiteLogic">
+            <meta name="description" content="insiteLogic" />
+          </Helmet>
+          <BrowserRouter>
+            <Switch>
+              <ProtectedRoute exact path="/" component={Dashboard} />
+              <ProtectedRoute exact path="/dashboard" component={Dashboard} />
+              <Route exact path="/login" component={Login} />
+              <Route path="" component={NotFoundPage} />
+            </Switch>
+          </BrowserRouter>
+          {/* <Footer />
+          <GlobalStyle /> */}
+        </DateRangeContextProvider>
+      </ContextStore>
     </>
   );
 }

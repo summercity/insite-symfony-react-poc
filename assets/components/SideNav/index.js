@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useContext } from "react";
 import { Layout, Menu } from "antd";
 import {
   AppstoreOutlined,
@@ -13,18 +13,24 @@ import {
   UserAddOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
+import { Context } from '../../context/ContextStore'
 import './sidenav.scss';
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
 
 function SideNav() {
+    const [state] = useContext(Context)
+    const { app } = state
+    console.log("SideNav Render")
   return (
     <>
         <Sider
             width={200}
             className="site-layout-background"
             className="side-nav"
+            collapsible 
+            collapsed={app.sideNavCollapse}
         >
             <Menu
                 mode="inline"
