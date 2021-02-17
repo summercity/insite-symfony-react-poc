@@ -1,59 +1,59 @@
-import React, { useContext, useMemo } from "react";
-import moment from "moment";
-import { Context } from "./../../context/ContextStore";
-import { SET_DATE_FILTER } from "./../../context/constant";
-import { Select, DatePicker as AntDatePicker } from "antd";
+import React, { useContext, useMemo } from 'react'
+import moment from 'moment'
+import { Context } from './../../context/ContextStore'
+import { SET_DATE_FILTER } from './../../context/constant'
+import { Select, DatePicker as AntDatePicker } from 'antd'
 
-const { Option } = Select;
-const { RangePicker } = AntDatePicker;
+const { Option } = Select
+const { RangePicker } = AntDatePicker
 
-const TODAY = "TODAY";
-const LAST_7_DAYS = "LAST_7_DAYS";
-const LAST_14_DAYS = "LAST_14_DAYS";
-const LAST_30_DAYS = "LAST_30_DAYS";
-const CURRENT_MONTH = "CURRENT_MONTH";
-const PREVIOUS_MONTH = "PREVIOUS_MONTH";
-const PREVIOUS_QUARTER = "PREVIOUS_QUARTER";
-const ALL = "ALL";
-const CUSTOM = "CUSTOM";
+const TODAY = 'TODAY'
+const LAST_7_DAYS = 'LAST_7_DAYS'
+const LAST_14_DAYS = 'LAST_14_DAYS'
+const LAST_30_DAYS = 'LAST_30_DAYS'
+const CURRENT_MONTH = 'CURRENT_MONTH'
+const PREVIOUS_MONTH = 'PREVIOUS_MONTH'
+const PREVIOUS_QUARTER = 'PREVIOUS_QUARTER'
+const ALL = 'ALL'
+const CUSTOM = 'CUSTOM'
 
 const DatePicker = () => {
-  const [state, dispatch] = useContext(Context);
-  const { dateFilter } = state;
-  const [preset, setPreset] = React.useState(TODAY);
-  const [isDatePickerVisible, setIsDatePickerVisible] = React.useState(false);
+  const [state, dispatch] = useContext(Context)
+  const { dateFilter } = state
+  const [preset, setPreset] = React.useState(TODAY)
+  const [isDatePickerVisible, setIsDatePickerVisible] = React.useState(false)
 
   const handleChange = (date, dateString) => {
     if (!date) {
-      const now = moment();
+      const now = moment()
       dispatch({
         type: SET_DATE_FILTER,
         payload: {
           ...state,
           dateFilter: {
-            startDate: now.clone().startOf("day"),
-            endDate: now.endOf("day"),
+            startDate: now.clone().startOf('day'),
+            endDate: now.endOf('day'),
           },
         },
-      });
-      setPreset(TODAY);
+      })
+      setPreset(TODAY)
     } else {
       dispatch({
         type: SET_DATE_FILTER,
         payload: {
           ...state,
           dateFilter: {
-            startDate: date[0].startOf("day"),
-            endDate: date[1].endOf("day"),
+            startDate: date[0].startOf('day'),
+            endDate: date[1].endOf('day'),
           },
         },
-      });
+      })
     }
-  };
+  }
 
   const handlePresetChange = (e) => {
-    const now = moment();
-    setPreset(e);
+    const now = moment()
+    setPreset(e)
     switch (e) {
       case TODAY:
         dispatch({
@@ -61,102 +61,102 @@ const DatePicker = () => {
           payload: {
             ...state,
             dateFilter: {
-              startDate: now.startOf("day"),
-              endDate: now.endOf("day"),
+              startDate: now.startOf('day'),
+              endDate: now.endOf('day'),
             },
           },
-        });
-        break;
+        })
+        break
       case LAST_7_DAYS:
         dispatch({
           type: SET_DATE_FILTER,
           payload: {
             ...state,
             dateFilter: {
-              startDate: now.clone().subtract(7, "days").startOf("day"),
-              endDate: now.endOf("day"),
+              startDate: now.clone().subtract(7, 'days').startOf('day'),
+              endDate: now.endOf('day'),
             },
           },
-        });
-        break;
+        })
+        break
       case LAST_14_DAYS:
         dispatch({
           type: SET_DATE_FILTER,
           payload: {
             ...state,
             dateFilter: {
-              startDate: now.clone().subtract(14, "days").startOf("day"),
-              endDate: now.endOf("day"),
+              startDate: now.clone().subtract(14, 'days').startOf('day'),
+              endDate: now.endOf('day'),
             },
           },
-        });
-        break;
+        })
+        break
       case LAST_30_DAYS:
         dispatch({
           type: SET_DATE_FILTER,
           payload: {
             ...state,
             dateFilter: {
-              startDate: now.clone().subtract(30, "days").startOf("day"),
-              endDate: now.endOf("day"),
+              startDate: now.clone().subtract(30, 'days').startOf('day'),
+              endDate: now.endOf('day'),
             },
           },
-        });
-        break;
+        })
+        break
       case CURRENT_MONTH:
         dispatch({
           type: SET_DATE_FILTER,
           payload: {
             ...state,
             dateFilter: {
-              startDate: now.clone().startOf("month"),
-              endDate: now.endOf("month"),
+              startDate: now.clone().startOf('month'),
+              endDate: now.endOf('month'),
             },
           },
-        });
-        break;
+        })
+        break
       case PREVIOUS_MONTH:
-        const lastMonth = now.subtract(1, "months");
+        const lastMonth = now.subtract(1, 'months')
         dispatch({
           type: SET_DATE_FILTER,
           payload: {
             ...state,
             dateFilter: {
-              startDate: lastMonth.clone().startOf("month"),
-              endDate: lastMonth.endOf("month"),
+              startDate: lastMonth.clone().startOf('month'),
+              endDate: lastMonth.endOf('month'),
             },
           },
-        });
-        break;
+        })
+        break
       case PREVIOUS_QUARTER:
-        const lastQuarter = now.subtract(1, "quarters");
+        const lastQuarter = now.subtract(1, 'quarters')
         dispatch({
           type: SET_DATE_FILTER,
           payload: {
             ...state,
             dateFilter: {
-              startDate: lastQuarter.clone().startOf("quarter"),
-              endDate: lastQuarter.endOf("quarter"),
+              startDate: lastQuarter.clone().startOf('quarter'),
+              endDate: lastQuarter.endOf('quarter'),
             },
           },
-        });
-        break;
+        })
+        break
       case ALL:
         dispatch({
           type: SET_DATE_FILTER,
           payload: { ...state, dateFilter: { startDate: null, endDate: null } },
-        });
-        break;
+        })
+        break
       case CUSTOM:
-        setIsDatePickerVisible(true);
-        break;
+        setIsDatePickerVisible(true)
+        break
     }
-  };
+  }
 
   return useMemo(() => {
     return (
       <>
-        {console.log("rerender")}
+        {console.log('rerender')}
         <Select
           style={{ width: 180 }}
           defaultValue={TODAY}
@@ -195,8 +195,8 @@ const DatePicker = () => {
           <RangePicker style={{ marginLeft: 15 }} onChange={handleChange} />
         )}
       </>
-    );
-  }, [dateFilter, dispatch]);
-};
+    )
+  }, [dateFilter, dispatch])
+}
 
-export default DatePicker;
+export default DatePicker

@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { Form, Input, Checkbox, Button, Layout, Col, Row } from "antd";
-import DatePicker from "./../../components/DatePicker";
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { Form, Input, Checkbox, Button, Layout, Col, Row } from 'antd'
+import DatePicker from './../../components/DatePicker'
 
 export default function Login() {
-  const [loading, setLoading] = useState(false);
-  const [form] = Form.useForm();
-  const handleSubmit = () => {};
+  const [loading, setLoading] = useState(false)
+  const [form] = Form.useForm()
+  const handleSubmit = () => {}
   return (
     <>
       <Layout>
-        <Row justify="center" align="middle" style={{ height: "100vh" }}>
+        <Row justify="center" align="middle" style={{ height: '100vh' }}>
           <Col span={6}>
             <Form
               form={form}
@@ -23,7 +23,7 @@ export default function Login() {
               <Form.Item
                 name="email"
                 rules={[
-                  { required: true, message: "Please enter your Email!" },
+                  { required: true, message: 'Please enter your Email!' },
                 ]}
               >
                 <Input size="large" type="text" placeholder="E-mail Address" />
@@ -31,7 +31,7 @@ export default function Login() {
               <Form.Item
                 name="password"
                 rules={[
-                  { required: true, message: "Please enter your Password!" },
+                  { required: true, message: 'Please enter your Password!' },
                 ]}
               >
                 <Input size="large" type="password" placeholder="Password" />
@@ -61,7 +61,7 @@ export default function Login() {
                 >
                   Log in
                 </Button>
-                <p style={{ marginTop: "1rem", textAlign: "center" }}>
+                <p style={{ marginTop: '1rem', textAlign: 'center' }}>
                   Don't have an account?{` `}
                   <Link to="/register">Sign Up</Link>
                 </p>
@@ -71,5 +71,5 @@ export default function Login() {
         </Row>
       </Layout>
     </>
-  );
+  )
 }

@@ -6,14 +6,13 @@
  */
 
 // start the Stimulus application
-import './bootstrap';
-import React from 'react';
+import './bootstrap'
+import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './containers/App';
-import 'antd/dist/antd.css';
+import App from './containers/App'
+import 'antd/dist/antd.css'
 
 // any CSS you import will output into a single css file (app.css in this case)
-import './styles/app.scss';
+import './styles/app.scss'
 
-
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('app'))
