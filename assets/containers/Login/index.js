@@ -11,7 +11,6 @@ export default function Login() {
     <>
       <Layout>
         <Row justify="center" align="middle" style={{ height: "100vh" }}>
-          <DatePicker />
           <Col span={6}>
             <Form
               form={form}

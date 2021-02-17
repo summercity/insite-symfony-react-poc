@@ -1,81 +1,156 @@
 import React from "react";
 import moment from "moment";
-import DateRangeContext from "./../../context/DateRangeContext";
+import { Context } from "./../../context/ContextStore";
+import { SET_DATE_FILTER } from "./../../context/constant";
 import { Select, DatePicker as AntDatePicker } from "antd";
+
 const { Option } = Select;
 const { RangePicker } = AntDatePicker;
 
+const TODAY = "TODAY";
+const LAST_7_DAYS = "LAST_7_DAYS";
+const LAST_14_DAYS = "LAST_14_DAYS";
+const LAST_30_DAYS = "LAST_30_DAYS";
+const CURRENT_MONTH = "CURRENT_MONTH";
+const PREVIOUS_MONTH = "PREVIOUS_MONTH";
+const PREVIOUS_QUARTER = "PREVIOUS_QUARTER";
+const ALL = "ALL";
+const CUSTOM = "CUSTOM";
+
 const DatePicker = () => {
-  const { setStartDate, setEndDate, startDate, endDate } = React.useContext(
-    DateRangeContext
-  );
+  const [state, dispatch] = React.useContext(Context);
   const [preset, setPreset] = React.useState(TODAY);
   const [isDatePickerVisible, setIsDatePickerVisible] = React.useState(false);
 
   const handleChange = (date, dateString) => {
     if (!date) {
       const now = moment();
-      setStartDate(now.clone().startOf("day"));
-      setEndDate(now.endOf("day"));
+      dispatch({
+        type: SET_DATE_FILTER,
+        payload: {
+          ...state,
+          dateFilter: {
+            startDate: now.clone().startOf("day"),
+            endDate: now.endOf("day"),
+          },
+        },
+      });
       setPreset(TODAY);
     } else {
-      setStartDate(date[0].startOf("day"));
-      setEndDate(date[1].endOf("day"));
+      dispatch({
+        type: SET_DATE_FILTER,
+        payload: {
+          ...state,
+          dateFilter: {
+            startDate: date[0].startOf("day"),
+            endDate: date[1].endOf("day"),
+          },
+        },
+      });
     }
   };
 
   const handlePresetChange = (e) => {
     const now = moment();
+    setPreset(e);
     switch (e) {
       case TODAY:
-        setStartDate(now.startOf("day"));
-        setEndDate(now.endOf("day"));
+        dispatch({
+          type: SET_DATE_FILTER,
+          payload: {
+            ...state,
+            dateFilter: {
+              startDate: now.startOf("day"),
+              endDate: now.endOf("day"),
+            },
+          },
+        });
         break;
       case LAST_7_DAYS:
-        setStartDate(now.clone().subtract(7, "days").startOf("day"));
-        setEndDate(now.endOf("day"));
+        dispatch({
+          type: SET_DATE_FILTER,
+          payload: {
+            ...state,
+            dateFilter: {
+              startDate: now.clone().subtract(7, "days").startOf("day"),
+              endDate: now.endOf("day"),
+            },
+          },
+        });
         break;
       case LAST_14_DAYS:
-        setStartDate(now.clone().subtract(14, "days").startOf("day"));
-        setEndDate(now.endOf("day"));
+        dispatch({
+          type: SET_DATE_FILTER,
+          payload: {
+            ...state,
+            dateFilter: {
+              startDate: now.clone().subtract(14, "days").startOf("day"),
+              endDate: now.endOf("day"),
+            },
+          },
+        });
         break;
       case LAST_30_DAYS:
-        setStartDate(now.clone().subtract(30, "days").startOf("day"));
-        setEndDate(now.endOf("day"));
+        dispatch({
+          type: SET_DATE_FILTER,
+          payload: {
+            ...state,
+            dateFilter: {
+              startDate: now.clone().subtract(30, "days").startOf("day"),
+              endDate: now.endOf("day"),
+            },
+          },
+        });
         break;
       case CURRENT_MONTH:
-        setStartDate(now.clone().startOf("month"));
-        setEndDate(now.endOf("month"));
+        dispatch({
+          type: SET_DATE_FILTER,
+          payload: {
+            ...state,
+            dateFilter: {
+              startDate: now.clone().startOf("month"),
+              endDate: now.endOf("month"),
+            },
+          },
+        });
         break;
       case PREVIOUS_MONTH:
         const lastMonth = now.subtract(1, "months");
-        setStartDate(lastMonth.clone().startOf("month"));
-        setEndDate(lastMonth.endOf("month"));
+        dispatch({
+          type: SET_DATE_FILTER,
+          payload: {
+            ...state,
+            dateFilter: {
+              startDate: lastMonth.clone().startOf("month"),
+              endDate: lastMonth.endOf("month"),
+            },
+          },
+        });
         break;
       case PREVIOUS_QUARTER:
         const lastQuarter = now.subtract(1, "quarters");
-        setStartDate(lastQuarter.clone().startOf("quarter"));
-        setEndDate(lastQuarter.endOf("quarter"));
+        dispatch({
+          type: SET_DATE_FILTER,
+          payload: {
+            ...state,
+            dateFilter: {
+              startDate: lastQuarter.clone().startOf("quarter"),
+              endDate: lastQuarter.endOf("quarter"),
+            },
+          },
+        });
         break;
       case ALL:
-        setStartDate(null);
-        setEndDate(null);
+        dispatch({
+          type: SET_DATE_FILTER,
+          payload: { ...state, dateFilter: { startDate: null, endDate: null } },
+        });
         break;
       case CUSTOM:
         setIsDatePickerVisible(true);
         break;
     }
   };
-
-  const TODAY = "TODAY";
-  const LAST_7_DAYS = "LAST_7_DAYS";
-  const LAST_14_DAYS = "LAST_14_DAYS";
-  const LAST_30_DAYS = "LAST_30_DAYS";
-  const CURRENT_MONTH = "CURRENT_MONTH";
-  const PREVIOUS_MONTH = "PREVIOUS_MONTH";
-  const PREVIOUS_QUARTER = "PREVIOUS_QUARTER";
-  const ALL = "ALL";
-  const CUSTOM = "CUSTOM";
 
   return (
     <>
