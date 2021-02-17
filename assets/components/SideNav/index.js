@@ -22,6 +22,7 @@ const { SubMenu } = Menu;
 function SideNav() {
     const [state] = useContext(Context)
     const { app } = state
+    console.log("SideNav Render")
   return (
     <>
         <Sider

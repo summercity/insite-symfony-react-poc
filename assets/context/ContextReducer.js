@@ -1,4 +1,4 @@
-import { SET_APP } from './constant'
+import { SET_APP, SET_DATE_FILTER, SET_APP_ERROR } from './constant'
 
 const ContextReducer = (state, action) => {
     switch (action.type) {
