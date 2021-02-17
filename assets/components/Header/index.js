@@ -1,15 +1,27 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Layout } from "antd";
 import { MenuFoldOutlined } from '@ant-design/icons';
+import { Context } from '../../context/ContextStore'
 import './header.scss';
 
 const { Header } = Layout;
 
 function MainHeader() {
+  const [state, dispatch] = useContext(Context);
+
+  const handleClickCollapse = () => {
+    const { app } = state
+    const newCollapse =  app.sideNavCollapse ? false : true
+    const payload = {
+      ...state.app,
+      sideNavCollapse: newCollapse
+    }
+    dispatch({type: 'SET_APP', payload: payload});
+  }
   return (
     <>
         <Header className="header">
-            <div className="menu-icon">
+            <div className="menu-icon" onClick={handleClickCollapse}>
                 <MenuFoldOutlined />
             </div>
             <div className="logo">
