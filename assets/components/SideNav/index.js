@@ -29,7 +29,6 @@ const SideNav = () => {
       <>
         <Sider
           width={200}
-          className="site-layout-background"
           className="side-nav"
           collapsible
           collapsed={app.sideNavCollapse}
