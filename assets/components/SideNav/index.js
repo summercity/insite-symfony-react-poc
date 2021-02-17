@@ -1,5 +1,6 @@
 
 import React, { useContext, useMemo } from "react";
+import { useHistory} from "react-router-dom";
 import { Layout, Menu } from "antd";
 import {
   AppstoreOutlined,
@@ -22,6 +23,8 @@ const { SubMenu } = Menu;
 const SideNav = () => {
     const [state, dispatch] = useContext(Context)
     const { app } = state
+    const history = useHistory();
+
   return useMemo(() => { 
       return (
         <>
@@ -38,10 +41,17 @@ const SideNav = () => {
                     // defaultOpenKeys={["sub1"]} TODO: Create global state
                     style={{ height: "100%", borderRight: 0 }}
                 >
-                    <Menu.Item key="dashboard" icon={<AppstoreOutlined />}>
+                    <Menu.Item 
+                        key="dashboard"
+                        icon={<AppstoreOutlined />} 
+                        onClick={() => history.push("/dashboard")}
+                    >
                         Dashboard
                     </Menu.Item>
-                    <Menu.Item key="overview" icon={<PieChartOutlined />}>
+                    <Menu.Item key="overview"
+                        icon={<PieChartOutlined />} 
+                        onClick={() => history.push("/overview")}
+                    >
                         Overview
                     </Menu.Item>
                     <Menu.Item key="myWorkDay" icon={<CalendarOutlined />}>

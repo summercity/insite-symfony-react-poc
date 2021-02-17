@@ -5,6 +5,7 @@ import { DateRangeContextProvider } from "./../../context/DateRangeContext";
 // import styled from 'styled-components';
 import ContextStore from '../../context/ContextStore'
 import Dashboard from "../Dashboard";
+import Overview from "../Overview";
 import Login from "../Login";
 import NotFoundPage from "../../components/NotFoundPage";
 import ProtectedRoute from "../../components/ProtectedRoute";
@@ -26,6 +27,7 @@ export default function App() {
             <Switch>
               <ProtectedRoute exact path="/" component={Dashboard} />
               <ProtectedRoute exact path="/dashboard" component={Dashboard} />
+              <ProtectedRoute exact path="/overview" component={Overview} />
               <Route exact path="/login" component={Login} />
               <Route path="" component={NotFoundPage} />
             </Switch>
