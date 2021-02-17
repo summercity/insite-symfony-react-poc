@@ -19,7 +19,7 @@ export default function Dashboard() {
       <>
         <h1>Dashboard Componet</h1>
         <button onClick={handleClick}>
-          Test Global State change From Dashboard
+          Test Global context State change From Dashboard
         </button>
         <label>Render {renderCount.current}</label>
       </>

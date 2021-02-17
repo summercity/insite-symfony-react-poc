@@ -20,7 +20,7 @@ const { Sider } = Layout
 const { SubMenu } = Menu
 
 const SideNav = () => {
-  const [state, dispatch] = useContext(Context)
+  const [state] = useContext(Context)
   const { app } = state
   const history = useHistory()
 
@@ -98,7 +98,7 @@ const SideNav = () => {
         </Sider>
       </>
     )
-  }, [app, dispatch])
+  }, [app, history])
 }
 
 export default SideNav
