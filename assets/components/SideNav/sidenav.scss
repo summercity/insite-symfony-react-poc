@@ -13,11 +13,13 @@
     i {
         color: rgba(255, 255, 255, 0.65);
     }
-    
     .ant-menu-submenu-title:hover {
         color: $lightTexColor;
         i {
             color: $lightTexColor !important;
         }
+    }
+    .ant-layout-sider-trigger {
+        display: none;
     }
 }
