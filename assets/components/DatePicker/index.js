@@ -104,7 +104,9 @@ const DatePicker = () => {
           Custom Range
         </Option>
       </Select>
-      {!!isDatePickerVisible && <RangePicker onChange={handleChange} />}
+      {!!isDatePickerVisible && (
+        <RangePicker style={{ marginLeft: 15 }} onChange={handleChange} />
+      )}
     </>
   );
 };
