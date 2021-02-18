@@ -1,21 +1,23 @@
 import React, { useContext, useMemo } from 'react'
 import moment from 'moment'
 import { Context } from 'Context/ContextStore'
-import { SET_DATE_FILTER } from 'Context/constant'
+import {
+  SET_DATE_FILTER,
+  TODAY,
+  LAST_7_DAYS,
+  LAST_14_DAYS,
+  LAST_30_DAYS,
+  CURRENT_MONTH,
+  PREVIOUS_MONTH,
+  PREVIOUS_QUARTER,
+  ALL,
+  CUSTOM,
+} from 'Context/constant'
+
 import { Select, DatePicker as AntDatePicker } from 'antd'
 
 const { Option } = Select
 const { RangePicker } = AntDatePicker
-
-const TODAY = 'TODAY'
-const LAST_7_DAYS = 'LAST_7_DAYS'
-const LAST_14_DAYS = 'LAST_14_DAYS'
-const LAST_30_DAYS = 'LAST_30_DAYS'
-const CURRENT_MONTH = 'CURRENT_MONTH'
-const PREVIOUS_MONTH = 'PREVIOUS_MONTH'
-const PREVIOUS_QUARTER = 'PREVIOUS_QUARTER'
-const ALL = 'ALL'
-const CUSTOM = 'CUSTOM'
 
 const DatePicker = () => {
   const [state, dispatch] = useContext(Context)
