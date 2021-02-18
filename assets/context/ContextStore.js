@@ -7,6 +7,7 @@ const initialState = {
     sideNavCollapse: false,
   },
   dateFilter: {
+    preset: null,
     startDate: null,
     endDate: null,
   },

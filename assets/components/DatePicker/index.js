@@ -30,10 +30,9 @@ const DatePicker = () => {
         type: SET_DATE_FILTER,
         payload: {
           ...dateFilter,
-          dateFilter: {
-            startDate: now.clone().startOf('day'),
-            endDate: now.endOf('day'),
-          },
+          preset: TODAY,
+          startDate: now.clone().startOf('day'),
+          endDate: now.endOf('day'),
         },
       })
       setPreset(TODAY)
@@ -42,10 +41,9 @@ const DatePicker = () => {
         type: SET_DATE_FILTER,
         payload: {
           ...dateFilter,
-          dateFilter: {
-            startDate: date[0].startOf('day'),
-            endDate: date[1].endOf('day'),
-          },
+          preset: CUSTOM,
+          startDate: date[0].startOf('day'),
+          endDate: date[1].endOf('day'),
         },
       })
     }
@@ -60,6 +58,7 @@ const DatePicker = () => {
           type: SET_DATE_FILTER,
           payload: {
             ...dateFilter,
+            preset: TODAY,
             startDate: now.startOf('day'),
             endDate: now.endOf('day'),
           },
@@ -70,6 +69,7 @@ const DatePicker = () => {
           type: SET_DATE_FILTER,
           payload: {
             ...dateFilter,
+            preset: LAST_7_DAYS,
             startDate: now.clone().subtract(7, 'days').startOf('day'),
             endDate: now.endOf('day'),
           },
@@ -80,6 +80,7 @@ const DatePicker = () => {
           type: SET_DATE_FILTER,
           payload: {
             ...dateFilter,
+            preset: LAST_14_DAYS,
             startDate: now.clone().subtract(14, 'days').startOf('day'),
             endDate: now.endOf('day'),
           },
@@ -90,6 +91,7 @@ const DatePicker = () => {
           type: SET_DATE_FILTER,
           payload: {
             ...dateFilter,
+            preset: LAST_30_DAYS,
             startDate: now.clone().subtract(30, 'days').startOf('day'),
             endDate: now.endOf('day'),
           },
@@ -100,6 +102,7 @@ const DatePicker = () => {
           type: SET_DATE_FILTER,
           payload: {
             ...dateFilter,
+            preset: CURRENT_MONTH,
             startDate: now.clone().startOf('month'),
             endDate: now.endOf('month'),
           },
@@ -111,6 +114,7 @@ const DatePicker = () => {
           type: SET_DATE_FILTER,
           payload: {
             ...dateFilter,
+            preset: PREVIOUS_MONTH,
             startDate: lastMonth.clone().startOf('month'),
             endDate: lastMonth.endOf('month'),
           },
@@ -122,6 +126,7 @@ const DatePicker = () => {
           type: SET_DATE_FILTER,
           payload: {
             ...dateFilter,
+            preset: PREVIOUS_QUARTER,
             startDate: lastQuarter.clone().startOf('quarter'),
             endDate: lastQuarter.endOf('quarter'),
           },
@@ -132,7 +137,9 @@ const DatePicker = () => {
           type: SET_DATE_FILTER,
           payload: {
             ...dateFilter,
-            dateFilter: { startDate: null, endDate: null },
+            preset: ALL,
+            startDate: moment('1970-01-01').startOf('day'),
+            endDate: moment('2999-01-01').endOf('day'),
           },
         })
         break
