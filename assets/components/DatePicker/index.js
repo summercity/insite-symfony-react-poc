@@ -22,7 +22,6 @@ const { RangePicker } = AntDatePicker
 const DatePicker = () => {
   const [state, dispatch] = useContext(Context)
   const { dateFilter } = state
-  const [preset, setPreset] = React.useState(TODAY)
   const [isDatePickerVisible, setIsDatePickerVisible] = React.useState(false)
 
   const handleChange = (date, dateString) => {
@@ -37,7 +36,6 @@ const DatePicker = () => {
           endDate: now.endOf('day'),
         },
       })
-      setPreset(TODAY)
     } else {
       dispatch({
         type: SET_DATE_FILTER,
@@ -53,7 +51,6 @@ const DatePicker = () => {
 
   const handlePresetChange = (e) => {
     const now = moment()
-    setPreset(e)
     switch (e) {
       case TODAY:
         dispatch({
@@ -156,8 +153,8 @@ const DatePicker = () => {
       <>
         <Select
           style={{ width: 180 }}
-          defaultValue={TODAY}
-          value={preset}
+          defaultValue={dateFilter.preset}
+          value={dateFilter.preset}
           onChange={handlePresetChange}
         >
           <Option key={1} value={TODAY}>
@@ -193,7 +190,7 @@ const DatePicker = () => {
         )}
       </>
     )
-  }, [dateFilter, preset, dispatch])
+  }, [dateFilter, dispatch])
 }
 
 export default DatePicker
