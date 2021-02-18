@@ -13,7 +13,7 @@ import {
   UserAddOutlined,
   LogoutOutlined,
 } from '@ant-design/icons'
-import { Context } from '../../context/ContextStore'
+import { Context } from 'Context/ContextStore'
 import './sidenav.scss'
 
 const { Sider } = Layout

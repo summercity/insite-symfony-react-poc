@@ -1,8 +1,8 @@
 import React from 'react'
 import { Layout } from 'antd'
-import MainHeader from '../Header'
-import SideNav from '../SideNav'
-import Breadcrumb from '../Breadcrump'
+import MainHeader from 'Components/Header'
+import SideNav from 'Components/SideNav'
+import Breadcrumb from 'Components/Breadcrump'
 import PropTypes from 'prop-types'
 
 const { Content } = Layout

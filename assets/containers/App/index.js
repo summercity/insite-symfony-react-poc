@@ -3,12 +3,12 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import { DateRangeContextProvider } from './../../context/DateRangeContext'
 // import styled from 'styled-components';
-import ContextStore from '../../context/ContextStore'
-import Dashboard from '../Dashboard'
-import Overview from '../Overview/Loadable'
-import Login from '../Login'
-import NotFoundPage from '../../components/NotFoundPage'
-import ProtectedRoute from '../../components/ProtectedRoute'
+import ContextStore from 'Context/ContextStore'
+import Dashboard from 'Containers/Dashboard'
+import Overview from 'Containers/Overview/Loadable'
+import Login from 'Containers/Login'
+import NotFoundPage from 'Components/NotFoundPage'
+import ProtectedRoute from 'Components/ProtectedRoute'
 
 // const AppWrapper = styled.div`
 //     width: 100%;

@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import { Layout } from 'antd'
 import { MenuFoldOutlined } from '@ant-design/icons'
-import { Context } from '../../context/ContextStore'
-import { SET_APP } from '../../context/constant'
+import { Context } from 'Context/ContextStore'
+import { SET_APP } from 'Context/constant'
 import './header.scss'
 
 const { Header } = Layout

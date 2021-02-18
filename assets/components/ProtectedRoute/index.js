@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import ContentWrapper from '../ContentWrapper'
+import ContentWrapper from 'Components/ContentWrapper'
 
 const ProtectedRoute = ({ component: Componnent, ...rest }) => {
   const access = true // TODO: add authentication
