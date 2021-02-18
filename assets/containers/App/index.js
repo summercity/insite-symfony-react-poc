@@ -5,7 +5,7 @@ import { DateRangeContextProvider } from './../../context/DateRangeContext'
 // import styled from 'styled-components';
 import ContextStore from '../../context/ContextStore'
 import Dashboard from '../Dashboard'
-import Overview from '../Overview'
+import Overview from '../Overview/Loadable'
 import Login from '../Login'
 import NotFoundPage from '../../components/NotFoundPage'
 import ProtectedRoute from '../../components/ProtectedRoute'
