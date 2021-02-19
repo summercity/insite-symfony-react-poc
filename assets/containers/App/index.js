@@ -10,23 +10,21 @@ import ProtectedRoute from 'Components/ProtectedRoute'
 
 export default function App() {
   return (
-    <>
-      <ContextStore>
-        <Helmet titleTemplate="insiteLogic" defaultTitle="insiteLogic">
-          <meta name="description" content="insiteLogic" />
-        </Helmet>
-        <BrowserRouter>
-          <Switch>
-            <ProtectedRoute exact path="/" component={Dashboard} />
-            <ProtectedRoute exact path="/dashboard" component={Dashboard} />
-            <ProtectedRoute exact path="/overview" component={Overview} />
-            <Route exact path="/login" component={Login} />
-            <Route path="" component={NotFoundPage} />
-          </Switch>
-        </BrowserRouter>
-        {/* <Footer />
+    <ContextStore>
+      <Helmet titleTemplate="insiteLogic" defaultTitle="insiteLogic">
+        <meta name="description" content="insiteLogic" />
+      </Helmet>
+      <BrowserRouter>
+        <Switch>
+          <ProtectedRoute exact path="/" component={Dashboard} />
+          <ProtectedRoute exact path="/dashboard" component={Dashboard} />
+          <ProtectedRoute exact path="/overview" component={Overview} />
+          <Route exact path="/login" component={Login} />
+          <Route path="" component={NotFoundPage} />
+        </Switch>
+      </BrowserRouter>
+      {/* <Footer />
           <GlobalStyle /> */}
-      </ContextStore>
-    </>
+    </ContextStore>
   )
 }

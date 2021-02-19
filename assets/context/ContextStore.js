@@ -25,7 +25,7 @@ const ContextStore = ({ children }) => {
 }
 
 ContextStore.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.array,
 }
 
 export const Context = createContext(initialState)
